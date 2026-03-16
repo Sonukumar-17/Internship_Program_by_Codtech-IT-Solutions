@@ -1,0 +1,17 @@
+from transformers import pipeline
+
+# Load summarization pipeline
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+# Example input text (you can replace this with any article or paragraph)
+text = """
+Artificial Intelligence is transforming industries worldwide. It enables machines
+to learn, reason, and make decisions. Applications range from healthcare to finance,
+education, and entertainment. AI continues to evolve rapidly.
+"""
+
+# Generate summary
+summary = summarizer(text, max_length=50, min_length=20, do_sample=False)
+
+print("Original Text:\n", text)
+print("\nSummary:\n", summary[0]['summary_text'])
